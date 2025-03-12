@@ -25,9 +25,10 @@ OBJ_DIR = obj
 
 # Files
 LIB	=	$(LIB_DIR)/libmy.a
-SRC	=	$(SRC_DIR)/main.c
+SRC	=   $(SRC_DIR)/split_strtok.c \
+		$(SRC_DIR)/read_csv.c
 OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-NAME	=	proj
+NAME	=	libcuddle.a
 
 # Compiler
 CC = gcc
@@ -39,7 +40,7 @@ $(LIB):
 	@$(MAKE) -C $(LIB_DIR)
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) -L$(LIB_DIR) -lmy
+	@ar rcT $(NAME) $(OBJ) $(LIB)
 	@echo -e "$(GREEN)[PROGRAM] $(BLUE)Program compiled$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
