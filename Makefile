@@ -25,9 +25,12 @@ OBJ_DIR = obj
 
 # Files
 LIB	=	$(LIB_DIR)/libmy.a
-SRC	=	$(SRC_DIR)/main.c
+
+SRC	=   $(SRC_DIR)/split_strtok.c \
+		$(SRC_DIR)/read_csv.c
+
 OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-NAME	=	proj
+NAME	=	libcuddle.a
 
 # Compiler
 CC = gcc
@@ -39,16 +42,16 @@ $(LIB):
 	@$(MAKE) -C $(LIB_DIR)
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) -L$(LIB_DIR) -lmy
-	@echo -e "$(GREEN)[PROGRAM] $(BLUE)Program compiled$(NC)"
+	@ar rcT $(NAME) $(OBJ) $(LIB)
+	@echo -e "$(GREEN)[PROJECT] $(BLUE)Project compiled$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@echo -e "$(GREEN)[PROGRAM]$(NC)Compiling $<$(NC)"
+	@echo -e "$(GREEN)[PROJECT]$(NC)Compiling $<$(NC)"
 	@$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	@echo -e "$(GREEN)[PROGRAM] $(BLUE)Clean$(NC)"
+	@echo -e "$(GREEN)[PROJECT] $(BLUE)Clean$(NC)"
 	@$(MAKE) -C $(LIB_DIR) clean
 	@rm -rf $(OBJ_DIR)
 
@@ -56,7 +59,7 @@ fclean: clean
 	@rm -f $(LIB)
 	@echo -e "$(YELLOW)[LIBRARY] $(BLUE)Full clean$(NC)"
 	@rm -f $(NAME)
-	@echo -e "$(GREEN)[PROGRAM] $(BLUE)Full clean$(NC)"
+	@echo -e "$(GREEN)[PROJECT] $(BLUE)Full clean$(NC)"
 
 re: fclean all
 
