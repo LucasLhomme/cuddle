@@ -30,4 +30,6 @@ char **split_strtok(char *str, char *delim);
 void df_free(dataframe_t *df);
 dataframe_t *df_read_csv(char *filename, char *separator);
 
+int df_write_csv(dataframe_t *dataframe, const char *filename);
+
 #endif /* !CUDDLE_H_ */
