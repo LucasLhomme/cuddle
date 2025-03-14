@@ -27,7 +27,10 @@ OBJ_DIR = obj
 LIB	=	$(LIB_DIR)/libmy.a
 
 SRC	=   $(SRC_DIR)/split_strtok.c \
-		$(SRC_DIR)/read_csv.c
+		$(SRC_DIR)/read_csv.c \
+		$(SRC_DIR)/write_csv.c
+
+FUNC_TEST_SRC = test.c
 
 OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME	=	libcuddle.a
@@ -49,6 +52,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@echo -e "$(GREEN)[PROJECT]$(NC)Compiling $<$(NC)"
 	@$(CC) -c $< -o $@ $(CFLAGS)
+
+func_tests: all
+	@$(CC) -o func_tests $(FUNC_TEST_SRC) $(CFLAGS) -L. -lcuddle
+	@echo -e "$(GREEN)[PROJECT] $(BLUE)Functional tests compiled$(NC)"
+
 
 clean:
 	@echo -e "$(GREEN)[PROJECT] $(BLUE)Clean$(NC)"

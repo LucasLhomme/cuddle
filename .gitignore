@@ -37,7 +37,8 @@
 *.hex
 
 # Project specific
-proj
+*.csv
+func_tests
 
 # Debug files
 *.dSYM/
