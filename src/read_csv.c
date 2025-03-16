@@ -16,19 +16,6 @@
 
 #include "dataframe.h"
 
-void df_free(dataframe_t *df)
-{
-    for (int i = 0; i < df->nb_rows; i++) {
-        for (int j = 0; j < df->nb_columns; j++)
-            free(df->data[i][j]);
-        free(df->data[i]);
-    }
-    free(df->data);
-    free(df->column_names);
-    free(df->column_types);
-    free(df);
-}
-
 static void df_fill(dataframe_t *df, char *line, int *is_header, char *sep)
 {
     char **tokens = NULL;
@@ -49,12 +36,13 @@ static void df_fill(dataframe_t *df, char *line, int *is_header, char *sep)
     }
 }
 
-static dataframe_t *df_init(FILE *file)
+dataframe_t *df_init(FILE *file, char *separator)
 {
     dataframe_t *df = malloc(sizeof(dataframe_t));
 
     if (!df){
-        fclose(file);
+        if (file)
+            fclose(file);
         return NULL;
     }
     df->nb_rows = 0;
@@ -62,6 +50,7 @@ static dataframe_t *df_init(FILE *file)
     df->column_names = NULL;
     df->column_types = NULL;
     df->data = NULL;
+    df->sep = strdup(separator);
     return df;
 }
 
@@ -78,7 +67,7 @@ dataframe_t *df_read_csv(char *filename, char *separator)
     file = fopen(filename, "r");
     if (!file)
         return NULL;
-    df = df_init(file);
+    df = df_init(file, separator);
     if (!df)
         return NULL;
     while (getline(&line, &len, file) != -1)
