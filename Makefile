@@ -28,7 +28,9 @@ LIB	=	$(LIB_DIR)/libmy.a
 
 SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/read_csv.c \
-		$(SRC_DIR)/write_csv.c
+		$(SRC_DIR)/write_csv.c \
+		$(SRC_DIR)/head.c \
+		$(SRC_DIR)/free.c
 
 FUNC_TEST_SRC = test.c
 
