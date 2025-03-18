@@ -32,7 +32,7 @@ SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/head.c \
 		$(SRC_DIR)/free.c
 
-FUNC_TEST_SRC = test.c
+FUNC_TEST_SRC = ./tests/test.c
 
 OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME	=	libcuddle.a
