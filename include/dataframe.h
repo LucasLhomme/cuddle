@@ -36,5 +36,7 @@ dataframe_t *df_init(FILE *file, char *separator);
 dataframe_t *df_read_csv(char *filename, char *separator);
 dataframe_t *df_head(dataframe_t *dataframe, int nb_rows);
 int df_write_csv(dataframe_t *dataframe, const char *filename);
+void df_info(dataframe_t *dataframe, int nb_columns);
+
 
 #endif /* !CUDDLE_H_ */
