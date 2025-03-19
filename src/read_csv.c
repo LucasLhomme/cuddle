@@ -38,10 +38,10 @@ static column_type_t find_column_type(dataframe_t *df, int column)
 {
     column_type_t type = UNDEFINED;
     char *value = NULL;
-    type_check_t type_checks[] = {is_bool, is_uint, is_int};
-    column_type_t types[] = {BOOL, UINT, INT};
+    type_check_t type_checks[] = {is_bool, is_uint, is_int, is_float};
+    column_type_t types[] = {BOOL, UINT, INT, FLOAT};
     size_t type_count = sizeof(type_checks) / sizeof(type_check_t);
-    column_type_t detected = NULL;
+    column_type_t detected = UNDEFINED;
 
     for (int i = 0; i < df->nb_rows; i++) {
         value = (char *)df->data[i][column];

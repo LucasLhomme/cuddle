@@ -21,7 +21,7 @@ int main(void)
     df_info(df);
     printf ("Shape: %d rows, %d columns\n", shape.nb_rows, shape.nb_columns) ;
     df_write_csv(df, "test_basic.csv");
-    df2 = df_tail(df, 3);
+    df2 = df_tail(df, 1);
     df_write_csv(df2, "test_tail.csv");
     df3 = df_head(df, 2);
     df_write_csv(df3, "test_head.csv");

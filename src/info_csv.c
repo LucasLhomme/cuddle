@@ -13,22 +13,6 @@
 #include "my_strings.h"
 #include "dataframe.h"
 
-column_type_t detect_column_type(const char *value)
-{
-    int is_float = 0;
-    int start = (value[0] == '-') ? 1 : 0;
-
-    for (int i = start; value[i] != '\0'; i++) {
-        if (value[i] == '.' && !is_float) {
-            is_float = 1;
-            continue;
-        }
-    }
-    if (start == 1 && is_float == 0)
-        return INT;
-    return is_float ? FLOAT : UINT;
-}
-
 void df_info(dataframe_t *dataframe)
 {
     const char *type_names[] = {"bool", "int", "unsigned int",

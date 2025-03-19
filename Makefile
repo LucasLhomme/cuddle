@@ -34,6 +34,7 @@ SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/tail.c \
 		$(SRC_DIR)/info_csv.c \
 		$(SRC_DIR)/shape_csv.c \
+		$(SRC_DIR)/types.c
 
 FUNC_TEST_SRC = ./tests/test.c
 
