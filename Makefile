@@ -30,7 +30,8 @@ SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/read_csv.c \
 		$(SRC_DIR)/write_csv.c \
 		$(SRC_DIR)/head.c \
-		$(SRC_DIR)/free.c
+		$(SRC_DIR)/free.c \
+		$(SRC_DIR)/shape_csv.c \
 
 FUNC_TEST_SRC = ./tests/test.c
 
