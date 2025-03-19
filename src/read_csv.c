@@ -30,7 +30,7 @@ static void df_fill(dataframe_t *df, char *line, int *is_header, char *sep)
             df->column_types[i] = STRING;
         *is_header = 0;
     } else {
-        df->data = realloc(df->data, sizeof(void **) * (df->nb_rows + 2)); // +2 pour inclure NULL
+        df->data = realloc(df->data, sizeof(void **) * (df->nb_rows + 2));
         if (!df->data)
             return;
         df->data[df->nb_rows] = (void **)tokens;
