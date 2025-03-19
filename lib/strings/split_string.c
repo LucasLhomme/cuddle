@@ -15,6 +15,8 @@
 
 static int isdelim(char c, char const *delim)
 {
+    if (c == '\0')
+        return 1;
     for (int i = 0; delim[i] != '\0'; i++)
         if (c == delim[i])
             return 1;
