@@ -38,12 +38,12 @@ void df_info(dataframe_t *dataframe)
     if (!dataframe)
         return;
     printf("%i columns:\n", dataframe->nb_columns);
-        for (int i = 0; i < dataframe->nb_columns; i++) {
-            type_str = type_names[dataframe->column_types[i]];
-            if (!dataframe->column_names[i])
-                return;
-            printf("- %s: %s\n", dataframe->column_names[i],
-                type_str);
-        }
-        return;
+    for (int i = 0; i < dataframe->nb_columns; i++) {
+        type_str = type_names[dataframe->column_types[i]];
+        if (!dataframe->column_names[i])
+            return;
+        printf("- %s: %s\n", dataframe->column_names[i],
+            type_str);
+    }
+    return;
 }
