@@ -13,7 +13,7 @@
 
 int main(void)
 {
-    dataframe_t *df = df_read_csv("test.csv", ";");
+    dataframe_t *df = df_read_csv("test.csv", ",");
     dataframe_t *df3 = NULL;
 
     df_write_csv(df, "test_basic.csv");
