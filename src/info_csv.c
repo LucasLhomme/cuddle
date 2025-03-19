@@ -9,26 +9,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+#include "my_strings.h"
 #include "dataframe.h"
 
-void print_type(int type)
+column_type_t detect_type(const char *value)
 {
-    const char *types[] = { "bool", "int", "unsigned int",
-        "float", "string", "unknown" };
+    int is_float = 0;
 
-    printf("%s\n", (type >= BOOL && type <= STRING) ? types[type] : types[5]);
+    for (int i = 0; value[i] != '\0'; i++) {
+        if (value[i] == '.' && !is_float) {
+            is_float = 1;
+        } else if (!isdigit(value[i])) {
+            return STRING;
+        }
+    }
+    return is_float ? FLOAT : UINT;
 }
 
-void df_info(dataframe_t *dataframe, int nb_rows)
+void df_info(dataframe_t *dataframe)
 {
-    int rows_to_print = (nb_rows > dataframe->nb_rows) ?
-    dataframe->nb_rows : nb_rows;
-
-    if (!dataframe || nb_rows <= 0)
+    if (!dataframe)
         return;
-    printf("%d rows:\n", rows_to_print);
-    for (int i = 0; i < rows_to_print; i++) {
+    printf("%d columns:\n", dataframe->nb_columns);
+    for (int i = 0; i < dataframe->nb_columns; i++) {
         printf("- %s: ", dataframe->column_names[i]);
         print_type(dataframe->column_types[i]);
     }

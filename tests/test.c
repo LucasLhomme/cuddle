@@ -17,7 +17,7 @@ int main(void)
     dataframe_t *df3 = NULL;
 
     df_write_csv(df, "test_basic.csv");
-    df_info(df, 3);
+    df_info(df);
     df3 = df_head(df, 2);
     df_write_csv(df3, "test_head.csv");
     df_free(df);
