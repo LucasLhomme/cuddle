@@ -37,5 +37,9 @@ dataframe_t *df_read_csv(char *filename, char *separator);
 dataframe_t *df_head(dataframe_t *dataframe, int nb_rows);
 int df_write_csv(dataframe_t *dataframe, const char *filename);
 dataframe_t *df_tail(dataframe_t *dataframe, int nb_rows);
+void copy_dataframe_data(dataframe_t *dest,
+    dataframe_t *src, int nb_rows);
+void copy_dataframe_metadata(dataframe_t *dest,
+        dataframe_t *src, int nb_rows);
 
 #endif /* !CUDDLE_H_ */

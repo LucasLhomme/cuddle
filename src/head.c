@@ -11,7 +11,7 @@
 
 #include "dataframe.h"
 
-static void copy_dataframe_metadata(dataframe_t *dest,
+void copy_dataframe_metadata(dataframe_t *dest,
     dataframe_t *src, int nb_rows)
 {
     dest->nb_rows = nb_rows;
@@ -25,7 +25,7 @@ static void copy_dataframe_metadata(dataframe_t *dest,
         sizeof(int) * src->nb_columns);
 }
 
-static void copy_dataframe_data(dataframe_t *dest,
+void copy_dataframe_data(dataframe_t *dest,
     dataframe_t *src, int nb_rows)
 {
     dest->data = malloc(sizeof(void **) * nb_rows);
