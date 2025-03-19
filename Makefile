@@ -32,6 +32,8 @@ SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/head.c \
 		$(SRC_DIR)/free.c \
 		$(SRC_DIR)/tail.c \
+		$(SRC_DIR)/info_csv.c \
+		$(SRC_DIR)/shape_csv.c \
 
 FUNC_TEST_SRC = ./tests/test.c
 
@@ -39,8 +41,8 @@ OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME	=	libcuddle.a
 
 # Compiler
-CC = gcc
-CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -L$(LIB_DIR) -lmy
+CC = gcc -g
+CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -L$(LIB_DIR) -lmy -g
 
 all: $(LIB) $(NAME)
 

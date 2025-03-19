@@ -19,6 +19,11 @@ typedef enum {
     UNDEFINED
 } column_type_t;
 
+typedef struct dataframe_shape_s {
+    int nb_rows;
+    int nb_columns;
+} dataframe_shape_t;
+
 typedef struct {
     int nb_rows;
     int nb_columns;
@@ -41,5 +46,7 @@ void copy_dataframe_data(dataframe_t *dest,
     dataframe_t *src, int nb_rows);
 void copy_dataframe_metadata(dataframe_t *dest,
         dataframe_t *src, int nb_rows);
+void df_info(dataframe_t *dataframe);
+dataframe_shape_t df_shape(dataframe_t *dataframe);
 
 #endif /* !CUDDLE_H_ */
