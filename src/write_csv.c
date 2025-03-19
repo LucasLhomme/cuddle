@@ -16,7 +16,7 @@ static void write_row(FILE *file, dataframe_t *dataframe, int row)
     for (int j = 0; j < dataframe->nb_columns; j++) {
         fprintf(file, "%s", (char *)dataframe->data[row][j]);
         if (j < dataframe->nb_columns - 1)
-            fprintf(file, dataframe->sep);
+            fprintf(file, "%s", dataframe->sep);
     }
     if (row < dataframe->nb_rows - 1)
         fprintf(file, "\n");
@@ -33,7 +33,7 @@ int df_write_csv(dataframe_t *dataframe, const char *filename)
     for (int i = 0; i < dataframe->nb_columns; i++) {
         fprintf(file, "%s", dataframe->column_names[i]);
         if (i < dataframe->nb_columns - 1)
-            fprintf(file, dataframe->sep);
+            fprintf(file, "%s", dataframe->sep);
     }
     fprintf(file, "\n");
     for (int i = 0; i < dataframe->nb_rows; i++)

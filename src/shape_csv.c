@@ -15,8 +15,7 @@ dataframe_shape_t df_shape(dataframe_t *dataframe)
 {
     dataframe_shape_t df = {0};
 
-    if (dataframe == NULL || dataframe->nb_columns == NULL
-        || dataframe->nb_rows == NULL)
+    if (dataframe == NULL)
         return (dataframe_shape_t){0};
     df.nb_columns = dataframe->nb_columns;
     df.nb_rows = dataframe->nb_rows;
