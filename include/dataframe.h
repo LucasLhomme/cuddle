@@ -9,6 +9,7 @@
     #define CUDDLE_H_
 
     #include <stdio.h>
+    #include <stdbool.h>
 
 typedef enum {
     BOOL,
@@ -33,7 +34,13 @@ typedef struct {
     char *sep;
 } dataframe_t;
 
+typedef bool (*type_check_t)(const char *value);
+
 char **split_strtok(char *str, char *delim);
+
+bool is_bool(const char *);
+bool is_uint(const char *);
+bool is_int(const char *);
 
 void df_free(dataframe_t *df);
 dataframe_t *df_init(FILE *file, char *separator);
