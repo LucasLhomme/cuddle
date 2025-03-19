@@ -8,6 +8,8 @@
 #ifndef CUDDLE_H_
     #define CUDDLE_H_
 
+    #include <stdio.h>
+
 typedef enum {
     BOOL,
     INT,
@@ -23,13 +25,16 @@ typedef struct {
     char **column_names;
     column_type_t *column_types;
     void ***data;
+    char *sep;
 } dataframe_t;
 
 char **split_strtok(char *str, char *delim);
 
 void df_free(dataframe_t *df);
-dataframe_t *df_read_csv(char *filename, char *separator);
+dataframe_t *df_init(FILE *file, char *separator);
 
+dataframe_t *df_read_csv(char *filename, char *separator);
+dataframe_t *df_head(dataframe_t *dataframe, int nb_rows);
 int df_write_csv(dataframe_t *dataframe, const char *filename);
 
 #endif /* !CUDDLE_H_ */
