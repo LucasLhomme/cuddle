@@ -31,6 +31,7 @@ SRC	=   $(SRC_DIR)/split_strtok.c \
 		$(SRC_DIR)/write_csv.c \
 		$(SRC_DIR)/head.c \
 		$(SRC_DIR)/free.c \
+		$(SRC_DIR)/tail.c \
 		$(SRC_DIR)/info_csv.c \
 		$(SRC_DIR)/shape_csv.c \
 
