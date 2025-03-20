@@ -17,10 +17,11 @@ void copy_dataframe_metadata(dataframe_t *dest,
     dest->nb_rows = nb_rows;
     dest->nb_columns = src->nb_columns;
     dest->sep = strdup(src->sep);
-    dest->column_names = malloc(sizeof(char *) * src->nb_columns);
+    dest->column_names = malloc(sizeof(char *) * (src->nb_columns + 1));
     for (int i = 0; i < src->nb_columns; i++)
         dest->column_names[i] = strdup(src->column_names[i]);
-    dest->column_types = malloc(sizeof(int) * src->nb_columns);
+    dest->column_names[src->nb_columns] = NULL;
+    dest->column_types = malloc(sizeof(int) * (src->nb_columns));
     memcpy(dest->column_types, src->column_types,
         sizeof(int) * src->nb_columns);
 }
@@ -28,12 +29,14 @@ void copy_dataframe_metadata(dataframe_t *dest,
 void copy_dataframe_data(dataframe_t *dest,
     dataframe_t *src, int nb_rows)
 {
-    dest->data = malloc(sizeof(void **) * nb_rows);
+    dest->data = malloc(sizeof(void **) * (nb_rows + 1));
     for (int i = 0; i < nb_rows; i++) {
-        dest->data[i] = malloc(sizeof(void *) * src->nb_columns);
+        dest->data[i] = malloc(sizeof(void *) * (src->nb_columns + 1));
         for (int j = 0; j < src->nb_columns; j++)
-            dest->data[i][j] = src->data[i][j];
+            dest->data[i][j] = strdup(src->data[i][j]);
+        dest->data[i][src->nb_columns] = NULL;
     }
+    dest->data[nb_rows] = NULL;
 }
 
 dataframe_t *df_head(dataframe_t *dataframe, int nb_rows)

@@ -38,6 +38,7 @@ int df_write_csv(dataframe_t *dataframe, const char *filename)
     fprintf(file, "\n");
     for (int i = 0; i < dataframe->nb_rows; i++)
         write_row(file, dataframe, i);
+    fprintf(file, "\n");
     fclose(file);
     return 0;
 }
