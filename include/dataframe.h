@@ -46,6 +46,10 @@ bool is_float(const char *);
 void df_free(dataframe_t *);
 dataframe_t *df_init(FILE *, char *);
 
+void *df_get_value(dataframe_t *, int, const char *);
+void **df_get_values(dataframe_t *, const char *);
+void **df_get_unique_values(dataframe_t *, const char *);
+
 dataframe_t *df_read_csv(char *, char *);
 dataframe_t *df_head(dataframe_t *, int);
 int df_write_csv(dataframe_t *, const char *);

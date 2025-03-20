@@ -14,12 +14,14 @@
 static void copy_dataframe_tail_data(dataframe_t *dest, dataframe_t *src,
     int start_index, int data_size)
 {
-    dest->data = malloc(sizeof(void **) * data_size);
+    dest->data = malloc(sizeof(void **) * (data_size + 1));
     for (int i = 0; i < data_size; i++) {
-        dest->data[i] = malloc(sizeof(void *) * src->nb_columns);
+        dest->data[i] = malloc(sizeof(void *) * (src->nb_columns + 1));
         for (int j = 0; j < src->nb_columns; j++)
-            dest->data[i][j] = src->data[start_index + i][j];
+            dest->data[i][j] = strdup(src->data[start_index + i][j]);
+        dest->data[i][src->nb_columns] = NULL;
     }
+    dest->data[data_size] = NULL;
 }
 
 dataframe_t *df_tail(dataframe_t *dataframe, int nb_rows)
