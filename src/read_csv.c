@@ -57,11 +57,28 @@ static column_type_t find_column_type(dataframe_t *df, int column)
     return type;
 }
 
+static void check_table_length(dataframe_t *df)
+{
+    int diff = 0;
+
+    for (int i = 0; i < df->nb_rows; i++) {
+        if (my_strarray_len((char **)df->data[i]) < df->nb_columns) {
+            diff = df->nb_columns - my_strarray_len((char **)df->data[i]);
+            fprintf(stderr, "Error: line %d has too few columns\n",
+                i + 1);
+            df->column_names[df->nb_columns - diff + 1] = NULL;
+            df->nb_columns -= diff;
+            return;
+        }
+    }
+}
+
 static void get_types(dataframe_t *df)
 {
     for (int i = 0; i < df->nb_columns; i++)
         if (df->column_types[i] == UNDEFINED)
             df->column_types[i] = find_column_type(df, i);
+    check_table_length(df);
 }
 
 static void df_fill(dataframe_t *df, char *line, int *is_header, char *sep)
