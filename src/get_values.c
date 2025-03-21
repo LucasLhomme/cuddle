@@ -68,6 +68,8 @@ void **df_get_unique_values(dataframe_t *df, const char *column)
 
     if (!values)
         return NULL;
+    for (int i = 0; i <= df->nb_rows; i++)
+        values[i] = NULL;
     for (int i = 0; i < df->nb_rows; i++) {
         if (my_strarray_index(values, df->data[i][column_index]) == -1) {
             values[index] = df_get_value_by_index(df, i, column_index);
