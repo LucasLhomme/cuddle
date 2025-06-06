@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #include "dataframe.h"
 
@@ -17,9 +16,9 @@ int main(void)
     dataframe_shape_t shape = df_shape(df);
     dataframe_t *df2 = df_tail(df, 3);
     dataframe_t *df3 = df_head(df, 3);
-    void *value = df_get_value(df, 0, "age");
-    void **values = df_get_values(df, "age");
-    void **unique_values = df_get_unique_values(df, "age");
+    void *value = df_get_value(df, 0, "City");
+    void **values = df_get_values(df, "City");
+    void **unique_values = df_get_unique_values(df, "City");
 
     df_info(df);
     printf ("Shape: %d rows, %d columns\n", shape.nb_rows, shape.nb_columns) ;

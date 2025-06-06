@@ -43,15 +43,15 @@ OBJ =	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME	=	libcuddle.a
 
 # Compiler
-CC = gcc -g
-CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -L$(LIB_DIR) -lmy -g
+CC = gcc
+CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -L$(LIB_DIR) -lmy
 
 all: $(LIB) $(NAME)
 
 $(LIB):
 	@$(MAKE) -C $(LIB_DIR)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIB)
 	@ar rcT $(NAME) $(OBJ) $(LIB)
 	@echo -e "$(GREEN)[PROJECT] $(BLUE)Project compiled$(NC)"
 
