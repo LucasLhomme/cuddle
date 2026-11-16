@@ -4,7 +4,7 @@
 [![Build: Make](https://img.shields.io/badge/Build-Makefile-orange.svg)](Makefile)
 [![Module: G-AIA-200](https://img.shields.io/badge/Epitech-G--AIA--200-blue.svg)](https://www.epitech.eu/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Academic Year: 2024-2025](https://img.shields.io/badge/Academic%20Year-2024--2025%20(Tek1)-blueviolet.svg)](#)
+[![Epitech: Tek1](https://img.shields.io/badge/Epitech-Tek1-005696.svg)](https://www.epitech.eu/)
 
 > **Cuddle is a lightweight in-memory DataFrame library written in pure C**, inspired by Python's Pandas for parsing, analyzing, shaping, and serializing CSV data.
 
