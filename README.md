@@ -1,17 +1,35 @@
-# Cuddle
+# 🐼 Cuddle — Fast Tabular Data & CSV Processing Library in C
 
-> **Fast tabular data & CSV manipulation library in C.**
+[![Language: C](https://img.shields.io/badge/Language-C-00599C.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Build: Make](https://img.shields.io/badge/Build-Makefile-orange.svg)](Makefile)
+[![Module: G-AIA-200](https://img.shields.io/badge/Epitech-G--AIA--200-blue.svg)](https://www.epitech.eu/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Overview
-C library providing Pandas-like DataFrame abstraction for reading, shaping, filtering, and writing CSV datasets:
-- High-level operations: `read_csv`, `write_csv`, `head`, `tail`, `info_csv`, `shape_csv`
-- Dynamic column type inference and tokenization
-- Clean memory management and lifecycle routines
+> **Cuddle is a lightweight in-memory DataFrame library written in pure C**, inspired by Python's Pandas for parsing, analyzing, shaping, and serializing CSV data.
 
-## Build & Usage
+---
+
+## ⚙️ Features
+
+- **CSV Ingestion:** Fast `read_csv(const char *filepath)` with dynamic row and column tokenization.
+- **DataFrame Inspection:**
+  - `head(df, n)`: Displays top $n$ records.
+  - `tail(df, n)`: Displays bottom $n$ records.
+  - `shape_csv(df)`: Reports dimensional matrix tuple `(rows, cols)`.
+  - `info_csv(df)`: Summarizes column types and non-null counts.
+- **Exporting:** Serializes in-memory modifications back to disk with `write_csv(df, const char *filepath)`.
+
+---
+
+## 🛠️ Build
+
 ```bash
 make
+# Produces libcuddle.a
 ```
 
-## License
-Open-source under MIT License.
+---
+
+## 📜 License
+
+Licensed under the **MIT License with attribution** to Lucas Lhomme (Crabe).
